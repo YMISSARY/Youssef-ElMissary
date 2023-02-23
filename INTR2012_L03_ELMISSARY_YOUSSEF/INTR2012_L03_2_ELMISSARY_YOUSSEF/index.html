@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3 Part 2</title>
+    <script src="./scripts/script.js"></script>
+</head>
+  <body>
+    
+    <label for="search">Search Products:</label>
+    <input type="text" id="search" name="search">
+    
+    <ul id="product-list">
+    </ul>
+    
+    
+    <script>
+      
+      const products = [
+        "Soda",
+        "Tiger",
+        "Lion",
+        "Tree",
+        "Melon",
+        "Mango",
+        "Apple",
+        "Cat",
+        "Cheese",
+        "Baklawa"
+      ];
+      
+     
+      const productList = document.getElementById("product-list");
+      for (let i = 0; i < products.length; i++) {
+        const listItem = document.createElement("li");
+        listItem.textContent = products[i];
+        productList.appendChild(listItem);
+      };
+      
+      function searchProducts(query) {
+        return products.filter(product => product.toLowerCase().includes(query.toLowerCase()));
+      };
+
+      const searchInput = document.getElementById("search");
+      searchInput.addEventListener("input", function() {
+        const query = searchInput.value;
+        const filteredProducts = searchProducts(query);
+        productList.innerHTML = "";
+        for (let i = 0; i < filteredProducts.length; i++) {
+          const listItem = document.createElement("li");
+          listItem.textContent = filteredProducts[i];
+          productList.appendChild(listItem);
+        }
+      })
+
+    </script>
+  </body>
+</html>
+
+</body>
+</html>
